@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\BookResource;
+use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -13,7 +15,8 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return response()->json($categories);
+        // return response()->json($categories);
+        return CategoryResource::collection($categories);
     }
 
     /**
@@ -29,8 +32,9 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        $category = Category::with('books')->where('id', $category->id)->get();
-        return response()->json($category);
+        // $category = Category::with('books')->where('id', $category->id)->get();
+        // return response()->json($category);
+        return new CategoryResource($category);
     }
 
     /**
@@ -47,5 +51,12 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         //
+    }
+
+    public function booksOfCategory(Category $category)
+    {
+        $books = $category->books;
+        //return response()->json($books);
+        return BookResource::collection($books);
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreBookRequest;
+use App\Http\Resources\BookResource;
 use App\Models\Book;
 use Illuminate\Http\Request;
 
@@ -13,16 +15,27 @@ class BookController extends Controller
     public function index()
     {
         // $books = Book::all();
-        $books = Book::with('category')->get();
+        // $books = Book::with('category')->get();
+        $books = BookResource::collection(Book::all());
         return response()->json($books);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreBookRequest $request)
     {
-        //
+        $request->validated();
+
+        // $book = new Book();
+        // $book->title = $request->title;
+        // $book->ISBN = $request->ISBN;
+        // ...
+        // $book->save();
+
+        $book = Book::create($request->only(['title', 'ISBN', 'pages', 'description', 'hard_cover', 'category_id']));
+
+        return new BookResource($book);
     }
 
     /**
@@ -30,16 +43,22 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        $book = Book::with('category')->where('id', $book->id)->first();
-        return response()->json($book);
+        // $book = Book::with('category')->where('id', $book->id)->first();
+        // return response()->json($book);
+        return new BookResource($book);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Book $book)
+    public function update(StoreBookRequest $request, Book $book)
     {
-        //
+        $request->validated();
+
+        $book->update($request->only(['title', 'ISBN', 'pages', 'description', 'hard_cover', 'category_id']));
+
+        return new BookResource($book);
+
     }
 
     /**
@@ -47,6 +66,7 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        $book->delete();
+        return response()->json(null, 204);
     }
 }

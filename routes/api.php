@@ -18,3 +18,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiResource('books', BookController::class);
 Route::apiResource('categories', CategoryController::class);
+Route::get('/categories/{category}/books', [CategoryController::class, 'booksOfCategory']);
