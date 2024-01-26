@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->references('id')->on('categories');
+            $table->foreignId('category_id')->nullable()->references('id')->on('categories')->onDelete('set null');
             $table->string('title');
             $table->integer('pages');
             $table->text('description')->nullable();
