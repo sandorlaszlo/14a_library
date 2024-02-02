@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreBookRequest;
 use App\Http\Resources\BookResource;
+use App\Http\Resources\ReaderResource;
 use App\Models\Book;
 use Illuminate\Http\Request;
 
@@ -46,6 +47,14 @@ class BookController extends Controller
         // $book = Book::with('category')->where('id', $book->id)->first();
         // return response()->json($book);
         return new BookResource($book);
+    }
+
+    function readersOfBook(Book $book) {
+        $readers = $book->readers;
+        if ($readers->isEmpty()) {
+            return response()->json(status: 404);
+        }
+        return ReaderResource::collection($readers);
     }
 
     /**

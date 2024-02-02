@@ -36,4 +36,15 @@ class Book extends Model
     {
         return $this->belongsToMany(Author::class, 'authors_books', 'book_id', 'author_id');
     }
+
+    /**
+     * The readers that belong to the Book
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function readers(): BelongsToMany
+    {
+        return $this->belongsToMany(Reader::class, 'checkout', 'book_id', 'reader_id')
+                    ->withPivot(['start_date', 'end_date', 'is_returned']);
+    }
 }
