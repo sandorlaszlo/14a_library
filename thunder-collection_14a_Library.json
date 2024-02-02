@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "14a_Library",
-    "dateExported": "2024-01-26T11:08:22.020Z",
+    "dateExported": "2024-02-02T12:53:50.740Z",
     "version": "1.1",
     "folders": [
         {
@@ -17,6 +17,13 @@
             "containerId": "",
             "created": "2024-01-19T12:21:11.768Z",
             "sortNum": 20000
+        },
+        {
+            "_id": "bdd34807-4abf-4ef1-ba04-ce8a8de0205d",
+            "name": "Authors",
+            "containerId": "",
+            "created": "2024-01-26T12:20:51.801Z",
+            "sortNum": 30000
         }
     ],
     "requests": [
@@ -77,15 +84,71 @@
             "tests": []
         },
         {
+            "_id": "d78b95d1-4c24-4b11-8661-bf96e6230a9f",
+            "colId": "96eabb3b-417b-4844-990f-f5ef62165888",
+            "containerId": "bdd34807-4abf-4ef1-ba04-ce8a8de0205d",
+            "name": "Get books of author",
+            "url": "http://127.0.0.1:8000/api/authors/1/books",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-01-26T12:20:57.765Z",
+            "modified": "2024-01-26T12:21:45.245Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "application/json"
+                },
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
             "_id": "723dd62a-510e-4797-9cb1-b87993ca633c",
             "colId": "96eabb3b-417b-4844-990f-f5ef62165888",
             "containerId": "04b67f52-0e02-498e-afae-1205ecfa9676",
             "name": "Get books of category ",
-            "url": "http://127.0.0.1:8000/api/categories/1/books",
+            "url": "http://127.0.0.1:8000/api/categories/10000/books",
             "method": "GET",
             "sortNum": 15000,
             "created": "2024-01-19T12:23:30.846Z",
-            "modified": "2024-01-19T12:24:04.607Z",
+            "modified": "2024-01-26T11:22:35.061Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "application/json"
+                },
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "17bd4f60-8234-4fda-bdd3-6bc952a8a3ed",
+            "colId": "96eabb3b-417b-4844-990f-f5ef62165888",
+            "containerId": "480a45a0-d2c7-47f9-a657-0ef90d1b0249",
+            "name": "Book's readers",
+            "url": "http://127.0.0.1:8000/api/books/15/readers",
+            "method": "GET",
+            "sortNum": 15000,
+            "created": "2024-02-02T12:05:59.735Z",
+            "modified": "2024-02-02T12:15:24.932Z",
             "headers": [
                 {
                     "name": "Accept",
@@ -137,11 +200,11 @@
             "colId": "96eabb3b-417b-4844-990f-f5ef62165888",
             "containerId": "480a45a0-d2c7-47f9-a657-0ef90d1b0249",
             "name": "Search book",
-            "url": "http://127.0.0.1:8000/api/books/1",
+            "url": "http://127.0.0.1:8000/api/books/3",
             "method": "GET",
             "sortNum": 20000,
             "created": "2024-01-05T12:47:41.260Z",
-            "modified": "2024-01-05T12:48:12.293Z",
+            "modified": "2024-01-26T12:26:07.022Z",
             "headers": [
                 {
                     "name": "Accept",
